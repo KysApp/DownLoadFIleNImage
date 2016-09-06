@@ -173,7 +173,7 @@ public class FileOperation {
             Log.e("FileOperation", "the APK doesn't exist");
             return false;
         }
-        String extension = fileName.substring(0, fileName.length() - 3);
+        String extension = fileName.substring(fileName.length() - 3, fileName.length());
         if (!extension.equals("apk")) {
             Log.e("FileOperation", "the file is not a app installation package");
             return false;
@@ -183,7 +183,7 @@ public class FileOperation {
         intent.setAction(Intent.ACTION_VIEW);
         Uri uri = Uri.fromFile(new File(fileDir, fileName));
         intent.setDataAndType(uri, "application/vnd.android.package-archive");
-        Log.e("Download_API9_Upper", "install app");
+        Log.e("FileOperation", "install app");
         context.startActivity(intent);
         return true;
     }
