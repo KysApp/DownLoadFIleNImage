@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DownLoad</string>
+
+    <string name="downloadApp_API9Upper">下载(支持API9以上)</string>
+    <string name="downloadApp">下载</string>
+    <string name="downloadImage">下载图片</string>
+    <string name="fileOperation">文件处理</string>
+    <string name="download_percentage">%1$s%%</string>
+</resources>
