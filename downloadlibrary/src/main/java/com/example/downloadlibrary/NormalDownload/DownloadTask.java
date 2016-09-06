@@ -25,7 +25,7 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
     //此id为调用downloadTask.execute(url)时，第几个url，从0开始
     private int downloadId = 0;
     private boolean downloaded = true;
-
+    private String fileName = "download.apk";
     public DownloadTask(Context context,Handler uiHandler) {
         this.context = context;
         this.uiHandler = uiHandler;
@@ -37,6 +37,10 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
 
     public boolean isDownloaded() {
         return downloaded;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 
     @Override
@@ -60,7 +64,7 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
                 int fileLength = connection.getContentLength();
                 // download the file
                 input = connection.getInputStream();
-                output = new FileOutputStream(new File(context.getExternalFilesDir(""), "download.apk"));
+                output = new FileOutputStream(new File(context.getExternalFilesDir(""), fileName));
                 byte data[] = new byte[4096];
                 long total = 0;
                 int count;
