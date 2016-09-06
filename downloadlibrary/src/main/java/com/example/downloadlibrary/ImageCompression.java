@@ -49,6 +49,10 @@ public class ImageCompression {
         }
     }
 
+    public void setFile(File file) {
+        this.file = file;
+    }
+
     public boolean isCompressed() {
         return isCompressed;
     }
@@ -60,33 +64,31 @@ public class ImageCompression {
     /**
      * 屏幕宽度
      *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return 屏幕宽度
      */
     public static int getScreenWidth(Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
-        int width = dm.widthPixels;
-        return width;
+        return dm.widthPixels;
     }
 
     /**
      * 屏幕高度
      *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return 屏幕高度
      */
     public static int getScreenHeight(Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
-        int height = dm.heightPixels;
-        return height;
+        return dm.heightPixels;
     }
 
     /**
-     * @param srcPath
+     * @param srcPath 需要压缩的文件地址
      */
     public void compress(String srcPath) {
         BitmapFactory.Options opts = new BitmapFactory.Options();
@@ -95,7 +97,7 @@ public class ImageCompression {
         opts.inJustDecodeBounds = false;
         int w = opts.outWidth;
         int h = opts.outHeight;
-        int size = 0;
+        int size;
         if (w <= defaultDisplayW && h <= defaultDisplayH) {
             size = 1;
         } else {

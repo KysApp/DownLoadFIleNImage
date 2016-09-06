@@ -1,12 +1,8 @@
 package com.example.downloadlibrary;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import java.io.File;
@@ -15,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
+ * 使用该方法之前，请进行权限判断
+ *
  * Created by lhl on 2016/9/2.
  */
 public class FileOperation {
@@ -22,15 +20,11 @@ public class FileOperation {
     /*文件保存的目录及文件名称*/
     private static String fileDir = "";
     private static String fileName = "";
-    /*判断是否具有sd卡读写权限*/
-    private static boolean hasWRPermissionR = true;
-    private static boolean hasWRPermissionW = true;
 
     public FileOperation(Context context) {
         this.context = context;
         fileDir = context.getExternalFilesDir("") + "/";
         fileName = "download.apk";
-        checkVersion();
     }
 
     public String getFileDir() {
@@ -49,21 +43,7 @@ public class FileOperation {
         this.fileName = fileName;
     }
 
-    /**
-     * android 6.0系统的一些权限需要向用户获取，在manifast文件中设置无效，此处选择仅对版本判断
-     */
-    private static void checkVersion() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            int permissionCheckW = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            int permissionCheckR = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE);
-            if (permissionCheckW == PackageManager.PERMISSION_DENIED) {
-                hasWRPermissionW = false;
-            }
-            if (permissionCheckR == PackageManager.PERMISSION_DENIED) {
-                hasWRPermissionR = false;
-            }
-        }
-    }
+
 
     /**
      * 文件是否存在
@@ -72,12 +52,7 @@ public class FileOperation {
      * @throws NullPointerException if {@code fileName == null}.
      */
     public static boolean fileIsExists() {
-        File f = new File(fileDir, fileName);
-        if (!f.exists()) {
-            Log.e("FileOperation", "source file not found");
-            return false;
-        }
-        return true;
+        return fileIsExists(new File(fileDir, fileName));
     }
 
     /**
@@ -140,14 +115,6 @@ public class FileOperation {
      * @return 是否被移动
      */
     public static boolean moveFile(String destDirName, File srcFile) {
-        if (hasWRPermissionW) {
-            Log.e("FileOperation", "no permission for write SD card");
-            return false;
-        }
-        if (hasWRPermissionR) {
-            Log.e("FileOperation", "no permission for read SD card");
-            return false;
-        }
         if (!srcFile.exists() || !srcFile.isFile()) {
             Log.e("FileOperation", "source file not found");
             return false;

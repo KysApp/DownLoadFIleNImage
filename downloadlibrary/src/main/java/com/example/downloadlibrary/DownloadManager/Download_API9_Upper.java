@@ -37,11 +37,7 @@ public class Download_API9_Upper {
      * 需要系统权限：android.permission.DOWNLOAD_WITHOUT_NOTIFICATION.
      */
     public static final int VISIBILITY_HIDDEN = 2;
-    /**
-     * 没有进度通知，有完成通知
-     * {@link DownloadManager#addCompletedDownload(String, String,
-     * boolean, String, String, long, boolean)}.
-     */
+    /* 没有进度通知，有完成通知*/
     public static final int VISIBILITY_VISIBLE_NOTIFY_ONLY_COMPLETION = 3;
     /**
      * can take any of the following values: {@link #VISIBILITY_HIDDEN}

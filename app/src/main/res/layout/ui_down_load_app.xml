@@ -50,4 +50,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"/>
+
+    <!--文件操作测试-->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件是否存在"
+        android:id="@+id/bt_fileIsExist"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件删除"
+        android:id="@+id/bt_fileDelete"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件移动"
+        android:id="@+id/bt_fileMove"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件大小"
+        android:id="@+id/bt_fileSize"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="安装app"
+        android:id="@+id/bt_installApp"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
 </LinearLayout>
