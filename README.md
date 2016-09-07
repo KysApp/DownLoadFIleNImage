@@ -1,7 +1,6 @@
-用户群体:API 8(android2.2以上的用户)
-
-该lib分为4个模块：
-1.基于DownloadManager下载，带进度监听
+用户群体:API 8(android2.2以上的用户)  
+该lib分为4个模块：  
+1.基于DownloadManager下载，带进度监听  
 2基于AsyncTask下载（兼容更广），带进度监听
 3.图片的压缩
 4.文件的基本操作
