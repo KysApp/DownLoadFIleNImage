@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.WindowManager;
 
 import java.io.ByteArrayOutputStream;
@@ -61,6 +62,10 @@ public class ImageCompression {
         return maxSize;
     }
 
+    public File getFile() {
+        return file;
+    }
+
     /**
      * 屏幕宽度
      *
@@ -91,6 +96,19 @@ public class ImageCompression {
      * @param srcPath 需要压缩的文件地址
      */
     public void compress(String srcPath) {
+        if (file == null) {
+            Log.e("ImageCompression", "Illegal output file path");
+            return;
+        }
+        if (srcPath == null || srcPath.equals("")) {
+            Log.e("ImageCompression", "file not found");
+            return;
+        }
+        File fileTest = new File(srcPath);
+        if (fileTest == null) {
+            Log.e("ImageCompression", "file not found");
+            return;
+        }
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inJustDecodeBounds = true;
         Bitmap bitmap;
