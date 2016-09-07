@@ -26,7 +26,12 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
     private int downloadId = 0;
     private boolean downloaded = true;
     private String fileName = "download.apk";
-    public DownloadTask(Context context,Handler uiHandler) {
+
+    public DownloadTask(Context context) {
+        this.context = context;
+    }
+
+    public DownloadTask(Context context, Handler uiHandler) {
         this.context = context;
         this.uiHandler = uiHandler;
     }
@@ -48,7 +53,7 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
         InputStream input = null;
         OutputStream output = null;
         HttpURLConnection connection = null;
-        for(int i=0;i<sUrl.length;i++) {
+        for (int i = 0; i < sUrl.length; i++) {
             try {
                 URL url = new URL(sUrl[i]);
                 connection = (HttpURLConnection) url.openConnection();
@@ -65,20 +70,22 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
                 // download the file
                 input = connection.getInputStream();
                 output = new FileOutputStream(new File(context.getExternalFilesDir(""), fileName));
-                byte data[] = new byte[4096];
-                long total = 0;
-                int count;
-                while ((count = input.read(data)) != -1) {
-                    // allow canceling with back button
-                    if (isCancelled()) {
-                        input.close();
-                        return null;
+                if (uiHandler != null) {
+                    byte data[] = new byte[4096];
+                    long total = 0;
+                    int count;
+                    while ((count = input.read(data)) != -1) {
+                        // allow canceling with back button
+                        if (isCancelled()) {
+                            input.close();
+                            return null;
+                        }
+                        total += count;
+                        // publishing the progress....
+                        if (fileLength > 0) // only if total length is known
+                            publishProgress((int) (total * 100 / fileLength));
+                        output.write(data, 0, count);
                     }
-                    total += count;
-                    // publishing the progress....
-                    if (fileLength > 0) // only if total length is known
-                        publishProgress((int) (total * 100 / fileLength));
-                    output.write(data, 0, count);
                 }
             } catch (Exception e) {
                 return e.toString();
@@ -96,6 +103,7 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
         }
         return null;
     }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -106,15 +114,18 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
                 getClass().getName());
         mWakeLock.acquire();
     }
+
     @Override
     protected void onProgressUpdate(Integer... progress) {
         super.onProgressUpdate(progress);
-        uiHandler.sendEmptyMessageDelayed(progress[downloadId],100);
+        if (uiHandler != null)
+            uiHandler.sendEmptyMessageDelayed(progress[downloadId], 100);
     }
+
     @Override
     protected void onPostExecute(String result) {
         mWakeLock.release();
         if (result != null)
-            downloaded=false;
+            downloaded = false;
     }
 }
