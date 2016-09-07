@@ -1,73 +1,74 @@
-ÓÃ»§ÈºÌå:API 8(android2.2ÒÔÉÏµÄÓÃ»§)
-¸Ãlib·ÖÎª4¸öÄ£¿é,
-1.»ùÓÚDownloadManagerÏÂÔØ£¬´ø½ø¶È¼àÌı
-2»ùÓÚAsyncTaskÏÂÔØ£¨¼æÈİ¸ü¹ã£©£¬´ø½ø¶È¼àÌı
-3.Í¼Æ¬µÄÑ¹Ëõ
-4.ÎÄ¼şµÄ»ù±¾²Ù×÷
-/*********************ÎÒÊÇ·Ö½çÏß**********************/
-½ÓÏÂÀ´½éÉÜÊ¹ÓÃ·½·¨
-Ä£¿é1ËµÃ÷£º»ùÓÚDownloadManagerÏÂÔØ£¬´ø½ø¶È¼àÌı
-ÔÚÀı×ÓÖĞ£¬ÊÇprivate void download_API9Upper()·½·¨
-Step1£º´´½¨Download_API9_UpperÊµÀı£º
-¹¹Ôìº¯ÊıÎªDownload_API9_Upper(Context context)
-Step2£º¶¨ÖÆÏÂÔØµÄ²ÎÊı£¬ÓÃgetterºÍsetter¿ÉÒÔ»ñÈ¡ºÍÉèÖÃ¶¨ÖÆ²ÎÊı
-1.FileName£¨String£©£º¸øÏÂÔØµÄÎÄ¼şÉèÖÃÃû×Ö£¬ÓĞgetºÍset£¨Ä¬ÈÏdownload.apk£©
-2.SavePath£¨String£©£ºÎª±£Ö¤ÎÄ¼ş´æÔÚ£¬¸Ã·½·¨Ö»ÄÜ±£´æÔÚÄ¬ÈÏÂ·¾¶£¬µ«ÊÇÌá¹©ÁËÎÄ¼ş²Ù×÷Àà£¬ÏêÇéÇë¼ûÎÄ¼ş²Ù×÷ÀàËµÃ÷£¬ÓĞget·½·¨
-3.AllowScanningByMediaScanner£¨boolean£©£ºÊÇ·ñÔÊĞí±»ÏµÍ³MediaScannerÉ¨Ãèµ½£¬ÓĞgetºÍset·½·¨£¬Ä¬ÈÏfalse
-4.DownloadingNotifyWay£¨int£©:ÔÚÓĞÍ¨ÖªÀ¸ÉÏµÄÍ¨ÖªµÄÇé¿öÏÂ£¬Í¨ÖªÏÔÊ¾·½Ê½£¬ÓĞgetºÍset·½·¨£¬Ä¬ÈÏVISIBILITY_HIDDEN
-5.DownloadingTitle£¨String£©£ºÔÚÓĞÍ¨ÖªÀ¸ÉÏµÄÍ¨ÖªµÄÇé¿öÏÂ£¬ÕıÔÚÏÂÔØÍ¨ÖªµÄ±êÌâ£¬Ä¬ÈÏ¡±title¡±
-6.DownloadingDescription£¨String£©£ºÔÚÓĞÍ¨ÖªÀ¸ÉÏµÄÍ¨ÖªµÄÇé¿öÏÂ£¬ÕıÔÚÏÂÔØÍ¨ÖªµÄÃèÊö£¬Ä¬ÈÏ¡±description¡±
-7.ShowDownloading£¨boolean£©£ºÊÇ·ñÏÔÊ¾Í¨ÖªÀ¸ÉÏµÄÍ¨Öª
-8.DownloadId£¨long£©£ºÏÂÔØid£¬Ö»ÓĞÔÚµ÷ÓÃgetDownloadPercentage (long downloadId, Handler handler)Ê±ĞèÒª
-Step 3£º¿ªÊ¼ÏÂÔØ£¬µ÷ÓÃ·½·¨£º
+ç”¨æˆ·ç¾¤ä½“:API 8(android2.2ä»¥ä¸Šçš„ç”¨æˆ·)
+è¯¥libåˆ†ä¸º4ä¸ªæ¨¡å—,
+1.åŸºäºDownloadManagerä¸‹è½½ï¼Œå¸¦è¿›åº¦ç›‘å¬
+2åŸºäºAsyncTaskä¸‹è½½ï¼ˆå…¼å®¹æ›´å¹¿ï¼‰ï¼Œå¸¦è¿›åº¦ç›‘å¬
+3.å›¾ç‰‡çš„å‹ç¼©
+4.æ–‡ä»¶çš„åŸºæœ¬æ“ä½œ
+/*********************æˆ‘æ˜¯åˆ†ç•Œçº¿**********************/
+æ¥ä¸‹æ¥ä»‹ç»ä½¿ç”¨æ–¹æ³•
+æ¨¡å—1è¯´æ˜ï¼šåŸºäºDownloadManagerä¸‹è½½ï¼Œå¸¦è¿›åº¦ç›‘å¬
+åœ¨ä¾‹å­ä¸­ï¼Œæ˜¯private void download_API9Upper()æ–¹æ³•
+Step1ï¼šåˆ›å»ºDownload_API9_Upperå®ä¾‹ï¼š
+æ„é€ å‡½æ•°ä¸ºDownload_API9_Upper(Context context)
+Step2ï¼šå®šåˆ¶ä¸‹è½½çš„å‚æ•°ï¼Œç”¨getterå’Œsetterå¯ä»¥è·å–å’Œè®¾ç½®å®šåˆ¶å‚æ•°
+1.FileNameï¼ˆStringï¼‰ï¼šç»™ä¸‹è½½çš„æ–‡ä»¶è®¾ç½®åå­—ï¼Œæœ‰getå’Œsetï¼ˆé»˜è®¤download.apkï¼‰
+2.SavePathï¼ˆStringï¼‰ï¼šä¸ºä¿è¯æ–‡ä»¶å­˜åœ¨ï¼Œè¯¥æ–¹æ³•åªèƒ½ä¿å­˜åœ¨é»˜è®¤è·¯å¾„ï¼Œä½†æ˜¯æä¾›äº†æ–‡ä»¶æ“ä½œç±»ï¼Œè¯¦æƒ…è¯·è§æ–‡ä»¶æ“ä½œç±»è¯´æ˜ï¼Œæœ‰getæ–¹æ³•
+3.AllowScanningByMediaScannerï¼ˆbooleanï¼‰ï¼šæ˜¯å¦å…è®¸è¢«ç³»ç»ŸMediaScanneræ‰«æåˆ°ï¼Œæœ‰getå’Œsetæ–¹æ³•ï¼Œé»˜è®¤false
+4.DownloadingNotifyWayï¼ˆintï¼‰:åœ¨æœ‰é€šçŸ¥æ ä¸Šçš„é€šçŸ¥çš„æƒ…å†µä¸‹ï¼Œé€šçŸ¥æ˜¾ç¤ºæ–¹å¼ï¼Œæœ‰getå’Œsetæ–¹æ³•ï¼Œé»˜è®¤VISIBILITY_HIDDEN
+5.DownloadingTitleï¼ˆStringï¼‰ï¼šåœ¨æœ‰é€šçŸ¥æ ä¸Šçš„é€šçŸ¥çš„æƒ…å†µä¸‹ï¼Œæ­£åœ¨ä¸‹è½½é€šçŸ¥çš„æ ‡é¢˜ï¼Œé»˜è®¤â€titleâ€
+6.DownloadingDescriptionï¼ˆStringï¼‰ï¼šåœ¨æœ‰é€šçŸ¥æ ä¸Šçš„é€šçŸ¥çš„æƒ…å†µä¸‹ï¼Œæ­£åœ¨ä¸‹è½½é€šçŸ¥çš„æè¿°ï¼Œé»˜è®¤â€descriptionâ€
+7.ShowDownloadingï¼ˆbooleanï¼‰ï¼šæ˜¯å¦æ˜¾ç¤ºé€šçŸ¥æ ä¸Šçš„é€šçŸ¥
+8.DownloadIdï¼ˆlongï¼‰ï¼šä¸‹è½½idï¼Œåªæœ‰åœ¨è°ƒç”¨getDownloadPercentage (long downloadId, Handler handler)æ—¶éœ€è¦
+Step 3ï¼šå¼€å§‹ä¸‹è½½ï¼Œè°ƒç”¨æ–¹æ³•ï¼š
 public void download(String url) throws Exception 
-urlÎªÎÄ¼şÏÂÔØµØÖ·
-Step: 4: ÈôĞèÒª¸üĞÂ×Ô¶¨Òå½ø¶ÈÌõµÄ£¬Çëµ÷ÓÃ
-getDownloadPercentage (long downloadId, Handler handler)£¬
-downloadIdÔÚµ÷ÓÃ¸Ãº¯ÊıÖ®Ç°µ÷ÓÃget·½·¨»ñÈ¡£¬
-handlerÎª¸üĞÂUIµÄhandler£¬¸ÃhandlerÖĞ½øĞĞUI¸üĞÂ
-Step 5£ºÆäËü·½·¨£º
-isDownloadManagerAvailable()£º¼ì²éDownloadManagerÊÇ·ñ¿ÉÓÃ
+urlä¸ºæ–‡ä»¶ä¸‹è½½åœ°å€
+Step: 4: è‹¥éœ€è¦æ›´æ–°è‡ªå®šä¹‰è¿›åº¦æ¡çš„ï¼Œè¯·è°ƒç”¨
+getDownloadPercentage (long downloadId, Handler handler)ï¼Œ
+downloadIdåœ¨è°ƒç”¨è¯¥å‡½æ•°ä¹‹å‰è°ƒç”¨getæ–¹æ³•è·å–ï¼Œ
+handlerä¸ºæ›´æ–°UIçš„handlerï¼Œè¯¥handlerä¸­è¿›è¡ŒUIæ›´æ–°
+Step 5ï¼šå…¶å®ƒæ–¹æ³•ï¼š
+isDownloadManagerAvailable()ï¼šæ£€æŸ¥DownloadManageræ˜¯å¦å¯ç”¨
 
-Çë²Î¿¼Àı×ÓÖĞµÄDownloadActivityµÄdownload_API9Upper()·½·¨
-¸Ã·½·¨Ö§³Ö¶àÏß³ÌÏÂÔØ
-/*********************ÎÒÊÇ·Ö½çÏß**********************/
-Ä£¿é2ËµÃ÷£º»ùÓÚAsyncTaskÏÂÔØ£¨¼æÈİ¸ü¹ã£©£¬´ø½ø¶È¼àÌı
-ÓÃµ½µÄÀàÎªDownloadTask£¬¸Ã·½·¨ÓĞÁ½¸ö¹¹Ôìº¯Êı£º
+è¯·å‚è€ƒä¾‹å­ä¸­çš„DownloadActivityçš„download_API9Upper()æ–¹æ³•
+è¯¥æ–¹æ³•æ”¯æŒå¤šçº¿ç¨‹ä¸‹è½½
+/*********************æˆ‘æ˜¯åˆ†ç•Œçº¿**********************/
+æ¨¡å—2è¯´æ˜ï¼šåŸºäºAsyncTaskä¸‹è½½ï¼ˆå…¼å®¹æ›´å¹¿ï¼‰ï¼Œå¸¦è¿›åº¦ç›‘å¬
+ç”¨åˆ°çš„ç±»ä¸ºDownloadTaskï¼Œè¯¥æ–¹æ³•æœ‰ä¸¤ä¸ªæ„é€ å‡½æ•°ï¼š
 DownloadTask(Context context)
 DownloadTask(Context context, Handler uiHandler)
-Step 1£º´´½¨DownloadTaskÊµÀı£¬Ê¹ÓÃµÚÒ»¸ö¹¹Ôìº¯ÊıÎª²»´ø½ø¶È¼àÌıµÄÏÂÔØ£¬µÚ¶ş¸ö¹¹Ôìº¯ÊıÎª´ø½ø¶È¼àÌıµÄÏÂÔØ
-Step 2£º½øĞĞÏÂÔØ£º
-Ö´ĞĞdownloadTask.execute(String... sUrl);
-Step 3£ºÈôÒª½ø¶È¼àÌı£¬´«ÈëµÄhandlerÎª¸üĞÂUIµÄhandler
-²¢ÇÒÍ¨¹ıset·½·¨´«ÈëdownloadId
-¸ÃdownloadIdÎªdownloadTask.execute(String... sUrl);ÖĞurl´«ÈëÎ»ÖÃ£¬´Ó0¿ªÊ¼¼ÆËã£¬Ä¬ÈÏ¼àÌıµÄÊÇµÚ0¸öurlÏÂÔØµÄ½ø¶È
+Step 1ï¼šåˆ›å»ºDownloadTaskå®ä¾‹ï¼Œä½¿ç”¨ç¬¬ä¸€ä¸ªæ„é€ å‡½æ•°ä¸ºä¸å¸¦è¿›åº¦ç›‘å¬çš„ä¸‹è½½ï¼Œç¬¬äºŒä¸ªæ„é€ å‡½æ•°ä¸ºå¸¦è¿›åº¦ç›‘å¬çš„ä¸‹è½½
+Step 2ï¼šè¿›è¡Œä¸‹è½½ï¼š
+æ‰§è¡ŒdownloadTask.execute(String... sUrl);
+Step 3ï¼šè‹¥è¦è¿›åº¦ç›‘å¬ï¼Œä¼ å…¥çš„handlerä¸ºæ›´æ–°UIçš„handler
+å¹¶ä¸”é€šè¿‡setæ–¹æ³•ä¼ å…¥downloadId
+è¯¥downloadIdä¸ºdownloadTask.execute(String... sUrl);ä¸­urlä¼ å…¥ä½ç½®ï¼Œä»0å¼€å§‹è®¡ç®—ï¼Œé»˜è®¤ç›‘å¬çš„æ˜¯ç¬¬0ä¸ªurlä¸‹è½½çš„è¿›åº¦
 
-¾ßÌåÊ¹ÓÃÇë²Î¿¼DownloadActivityÖĞdownload()·½·¨
-/***********************ÎÒÊÇ·Ö½çÏß**********************/
-Ä£¿é3ËµÃ÷£ºÍ¼Æ¬µÄÑ¹Ëõ
-Ê¹ÓÃµ½µÄÀàÎªImageCompression
-Step 1£º´´½¨ImageCompressionÊµÀı£¬¹¹Ôìº¯ÊıÓĞÁ½¸ö£º
-Ä¬ÈÏÑ¹ËõÖ®ºó£¬ÎÄ¼ş´óĞ¡×î´óÖµ£º
+å…·ä½“ä½¿ç”¨è¯·å‚è€ƒDownloadActivityä¸­download()æ–¹æ³•
+/***********************æˆ‘æ˜¯åˆ†ç•Œçº¿**********************/
+æ¨¡å—3è¯´æ˜ï¼šå›¾ç‰‡çš„å‹ç¼©
+ä½¿ç”¨åˆ°çš„ç±»ä¸ºImageCompression
+Step 1ï¼šåˆ›å»ºImageCompressionå®ä¾‹ï¼Œæ„é€ å‡½æ•°æœ‰ä¸¤ä¸ªï¼š
+é»˜è®¤å‹ç¼©ä¹‹åï¼Œæ–‡ä»¶å¤§å°æœ€å¤§å€¼ï¼š
 ImageCompression(Context context)
-×Ô¶¨ÒåÑ¹ËõÖ®ºó£¬ÎÄ¼ş´óĞ¡×î´óÖµ
+è‡ªå®šä¹‰å‹ç¼©ä¹‹åï¼Œæ–‡ä»¶å¤§å°æœ€å¤§å€¼
 ImageCompression(Context context, int maxSize)
-Step 2£º¿ªÊ¼Ñ¹Ëõ
-compress(String srcPath)£¬srcPathÎªĞèÒªÑ¹ËõµÄÎÄ¼şµÄÂ·¾¶
-Step 3£ºÆäËü·½·¨
-setFile(File file) ÉèÖÃÊä³öÎÄ¼ş
-getFile()»ñÈ¡Êä³öÎÄ¼ş
-isCompressed()ÊÇ·ñ±»³É¹¦Ñ¹Ëõ
-getMaxSize()»ñÈ¡ÎÄ¼şÑ¹ËõÖ®ºó£¬ÎÄ¼ş´óĞ¡×î´óÖµ
-getScreenWidth(Context context)»ñÈ¡ÆÁÄ»¿í¶È
-getScreenHeight(Context context)»ñÈ¡ÆÁÄ»¸ß¶È
+Step 2ï¼šå¼€å§‹å‹ç¼©
+compress(String srcPath)ï¼ŒsrcPathä¸ºéœ€è¦å‹ç¼©çš„æ–‡ä»¶çš„è·¯å¾„
+Step 3ï¼šå…¶å®ƒæ–¹æ³•
+setFile(File file) è®¾ç½®è¾“å‡ºæ–‡ä»¶
+getFile()è·å–è¾“å‡ºæ–‡ä»¶
+isCompressed()æ˜¯å¦è¢«æˆåŠŸå‹ç¼©
+getMaxSize()è·å–æ–‡ä»¶å‹ç¼©ä¹‹åï¼Œæ–‡ä»¶å¤§å°æœ€å¤§å€¼
+getScreenWidth(Context context)è·å–å±å¹•å®½åº¦
+getScreenHeight(Context context)è·å–å±å¹•é«˜åº¦
 
-¾ßÌåÊ¹ÓÃÇë²Î¿¼DownloadActivityÖĞdownloadImage()·½·¨
-/***********************ÎÒÊÇ·Ö½çÏß**********************/
-Ä£¿é4ËµÃ÷£ºÎÄ¼şµÄ»ù±¾²Ù×÷
-×¢Òâ£ºÈç¹ûĞèÒªÖØÉèÎÄ¼ş±£´æÄ¿Â¼£¬ÇëÔÚ×Ô¼ºµÄ³ÌĞòÖĞÉêÇë¶ÁĞ´È¨ÏŞ
-¸Ã·½·¨Ìá¹©Á½ÖÖ²Ù×÷·½·¨
-1.	Ê¹ÓÃ´ø²ÎÊıµÄ·½·¨£¬Ö±½Ó´«Èë×Ô¼ºĞèÒª²Ù×÷µÄÎÄ¼ş½øĞĞ²Ù×÷
-2.	Í¨¹ıgetºÍset·½·¨ÉèÖÃºÃÎÄ¼şÎ»ÖÃÖ®ºó£¬Ö±½ÓÊ¹ÓÃ²»´ø²ÎÊıµÄ·½·¨²Ù×÷
+å…·ä½“ä½¿ç”¨è¯·å‚è€ƒDownloadActivityä¸­downloadImage()æ–¹æ³•
+/***********************æˆ‘æ˜¯åˆ†ç•Œçº¿**********************/
+æ¨¡å—4è¯´æ˜ï¼šæ–‡ä»¶çš„åŸºæœ¬æ“ä½œ
+æ³¨æ„ï¼šå¦‚æœéœ€è¦é‡è®¾æ–‡ä»¶ä¿å­˜ç›®å½•ï¼Œè¯·åœ¨è‡ªå·±çš„ç¨‹åºä¸­ç”³è¯·è¯»å†™æƒé™
+è¯¥æ–¹æ³•æä¾›ä¸¤ç§æ“ä½œæ–¹æ³•
+1.	ä½¿ç”¨å¸¦å‚æ•°çš„æ–¹æ³•ï¼Œç›´æ¥ä¼ å…¥è‡ªå·±éœ€è¦æ“ä½œçš„æ–‡ä»¶è¿›è¡Œæ“ä½œ
+2.	é€šè¿‡getå’Œsetæ–¹æ³•è®¾ç½®å¥½æ–‡ä»¶ä½ç½®ä¹‹åï¼Œç›´æ¥ä½¿ç”¨ä¸å¸¦å‚æ•°çš„æ–¹æ³•æ“ä½œ
 
-¾ßÌåÊ¹ÓÃÇë²Î¿¼DownloadActivityÖĞListenersµÄ¸÷button´¦Àí
+å…·ä½“ä½¿ç”¨è¯·å‚è€ƒDownloadActivityä¸­Listenersçš„å„buttonå¤„ç†
+ 
