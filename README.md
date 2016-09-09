@@ -1,4 +1,4 @@
-lib导入语句：
+lib导入语句：compile 'com.example.downloadlibrary:downloadlibrary:1.0.0'  
   
 用户群体:API 8(android2.2以上的用户)  
   
@@ -7,7 +7,9 @@ lib导入语句：
 2基于AsyncTask下载（兼容更广），带进度监听  
 3.图片的压缩  
 4.文件的基本操作  
+  
 /*********************我是分界线**********************/  
+  
 接下来介绍使用方法  
   
 模块1说明：基于DownloadManager下载，带进度监听  
@@ -41,7 +43,9 @@ isDownloadManagerAvailable()：检查DownloadManager是否可用
   
 请参考例子中的DownloadActivity的download_API9Upper()方法  
 该方法支持多线程下载  
+  
 /*********************我是分界线**********************/  
+  
 模块2说明：基于AsyncTask下载（兼容更广），带进度监听  
   
 用到的类为DownloadTask，该方法有两个构造函数：  
@@ -58,7 +62,9 @@ Step 3：若要进度监听，传入的handler为更新UI的handler
 该downloadId为downloadTask.execute(String... sUrl);中url传入位置，从0开始计算，默认监听的是第0个url下载的进度  
   
 具体使用请参考DownloadActivity中download()方法  
+  
 /***********************我是分界线**********************/  
+  
 模块3说明：图片的压缩  
   
 使用到的类为ImageCompression  
@@ -81,7 +87,9 @@ getScreenWidth(Context context)获取屏幕宽度
 getScreenHeight(Context context)获取屏幕高度  
   
 具体使用请参考DownloadActivity中downloadImage()方法  
+  
 /***********************我是分界线**********************/  
+  
 模块4说明：文件的基本操作  
   
 注意：如果需要重设文件保存目录，请在自己的程序中申请读写权限  
