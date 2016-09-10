@@ -8,27 +8,27 @@ API 8(android2.2以上的用户)
   
 该lib分为4个模块
 -
-  ###1.基于DownloadManager下载，带进度监听  
-  ###2.基于AsyncTask下载（兼容更广），带进度监听  
-  ###3.图片的压缩  
-  ###4.文件的基本操作  
+### 1.基于DownloadManager下载，带进度监听  
+### 2.基于AsyncTask下载（兼容更广），带进度监听  
+### 3.图片的压缩  
+### 4.文件的基本操作  
   
 模块1说明：基于DownloadManager下载，带进度监听  
 -
-#####在例子中，是private void download_API9Upper()方法  
+##### 在例子中，是private void download_API9Upper()方法  
   
-#####Step1：创建Download_API9_Upper实例   
-构造函数为Download_API9_Upper(Context context)  
+##### Step1：创建Download_API9_Upper实例   
+    构造函数为Download_API9_Upper(Context context)  
   
-#####Step2：定制下载的参数，用getter和setter可以获取和设置定制参数  
-1.FileName（String）：给下载的文件设置名字，有get和set（默认download.apk）  
-2.SavePath（String）：为保证文件存在，该方法只能保存在默认路径，但是提供了文件操作类，详情请见文件操作类说明，有get方法  
-3.AllowScanningByMediaScanner（boolean）：是否允许被系统MediaScanner扫描到，有get和set方法，默认false  
-4.DownloadingNotifyWay（int）:在有通知栏上的通知的情况下，通知显示方式，有get和set方法，默认VISIBILITY_HIDDEN  
-5.DownloadingTitle（String）：在有通知栏上的通知的情况下，正在下载通知的标题，默认”title”  
-6.DownloadingDescription（String）：在有通知栏上的通知的情况下，正在下载通知的描述，默认”description”  
-7.ShowDownloading（boolean）：是否显示通知栏上的通知  
-8.DownloadId（long）：下载id，只有在调用getDownloadPercentage (long downloadId, Handler handler)时需要   
+##### Step2：定制下载的参数，用getter和setter可以获取和设置定制参数  
+    1.FileName（String）：给下载的文件设置名字，有get和set（默认download.apk）  
+    2.SavePath（String）：为保证文件存在，该方法只能保存在默认路径，但是提供了文件操作类，详情请见文件操作类说明，有get方法  
+    3.AllowScanningByMediaScanner（boolean）：是否允许被系统MediaScanner扫描到，有get和set方法，默认false  
+    4.DownloadingNotifyWay（int）:在有通知栏上的通知的情况下，通知显示方式，有get和set方法，默认VISIBILITY_HIDDEN  
+    5.DownloadingTitle（String）：在有通知栏上的通知的情况下，正在下载通知的标题，默认”title”  
+    6.DownloadingDescription（String）：在有通知栏上的通知的情况下，正在下载通知的描述，默认”description”  
+    7.ShowDownloading（boolean）：是否显示通知栏上的通知  
+    8.DownloadId（long）：下载id，只有在调用getDownloadPercentage (long downloadId, Handler handler)时需要   
   
 #####Step 3：开始下载，调用方法   
 public void download(String url) throws Exception   
