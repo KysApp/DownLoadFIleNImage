@@ -1,6 +1,6 @@
 DownLoadFileNImage使用说明
 =
-####lib导入语句：compile 'com.example.downloadlibrary:downloadlibrary:1.0.0'  
+##### lib导入语句：compile 'com.example.downloadlibrary:downloadlibrary:1.0.0'  
 
 用户群体
 -
@@ -15,14 +15,16 @@ API 8(android2.2以上的用户)
   
 模块1说明：基于DownloadManager下载，带进度监听  
 -
-##### 在例子中，是private void download_API9Upper()方法  
+###### 在例子中，是private void download_API9Upper()方法  
   
 #### Step1：创建Download_API9_Upper实例   
     构造函数为Download_API9_Upper(Context context)  
   
 #### Step2：定制下载的参数，用getter和setter可以获取和设置定制参数  
-    1.FileName（String）：给下载的文件设置名字，有get和set（默认download.apk）<br>
+    1.FileName（String）：给下载的文件设置名字，有get和set（默认download.apk） 
+    
     2.SavePath（String）：为保证文件存在，该方法只能保存在默认路径，但是提供了文件操作类，详情请见文件操作类说明，有get方法   
+    
     3.AllowScanningByMediaScanner（boolean）：是否允许被系统MediaScanner扫描到，有get和set方法，默认false  
     
     4.DownloadingNotifyWay（int）:在有通知栏上的通知的情况下，通知显示方式，有get和set方法，默认VISIBILITY_HIDDEN  
@@ -48,12 +50,12 @@ API 8(android2.2以上的用户)
 #### Step 5：其它方法   
     isDownloadManagerAvailable()：检查DownloadManager是否可用  
   
-##### 请参考例子中的DownloadActivity的download_API9Upper()方法  
-##### 该方法支持多线程下载  
+###### 请参考例子中的DownloadActivity的download_API9Upper()方法  
+###### 该方法支持多线程下载  
   
 模块2说明：基于AsyncTask下载（兼容更广），带进度监听  
 -
-##### 用到的类为DownloadTask，该方法有两个构造函数    
+#### 用到的类为DownloadTask，该方法有两个构造函数    
     DownloadTask(Context context)  
     DownloadTask(Context context, Handler uiHandler)  
   
@@ -74,16 +76,19 @@ API 8(android2.2以上的用户)
    
     若不知道怎么获取downloadId，请看step2
   
-##### 具体使用请参考DownloadActivity中download()方法  
+###### 具体使用请参考DownloadActivity中download()方法  
 
 模块3说明：图片的压缩  
 -
-##### 使用到的类为ImageCompression  
+###### 使用到的类为ImageCompression  
   
 #### Step 1：创建ImageCompression实例，构造函数有两个    
     默认压缩，文件大小最大值为45KB：
-        ImageCompression(Context context)  
+    
+        ImageCompression(Context context)
+    
     自定义压缩，文件大小最大值为maxSize：
+    
         ImageCompression(Context context, int maxSize)  
   
 #### Step 2：开始压缩  
@@ -102,18 +107,18 @@ API 8(android2.2以上的用户)
     
     6.getScreenHeight(Context context)获取屏幕高度  
   
-具体使用请参考DownloadActivity中downloadImage()方法  
+###### 具体使用请参考DownloadActivity中downloadImage()方法  
   
 模块4说明：文件的基本操作  
 -
-##### 如果需要重设文件保存目录，请在自己的程序中申请读写权限  
-##### 使用到的类为FileOperation
+###### 如果需要重设文件保存目录，请在自己的程序中申请读写权限  
+###### 使用到的类为FileOperation
 
 #### 该方法提供两种操作方法  
     1.使用带参数的方法，直接传入自己需要操作的文件进行操作  
     
     2.通过get和set方法设置好文件位置之后，直接使用不带参数的方法操作  
   
-##### 具体使用请参考DownloadActivity中Listeners的各button处理  
+###### 具体使用请参考DownloadActivity中Listeners的各button处理  
    
   
