@@ -1,6 +1,9 @@
+DownLoadFileNImage使用说明  
+#
 lib导入语句：compile 'com.example.downloadlibrary:downloadlibrary:1.0.0'  
   
-用户群体:API 8(android2.2以上的用户)  
+用户群体  
+API 8(android2.2以上的用户)  
   
 该lib分为4个模块：  
 1.基于DownloadManager下载，带进度监听  
