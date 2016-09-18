@@ -20,7 +20,7 @@ API 8(android2.2以上的用户)
   
 模块1说明：基于DownloadManager下载，带进度监听  
 -
-###### 在例子中，是private void download_API9Upper()方法  
+#### 使用到的类为Download_API9_Upper和DownloadObserver
   
 #### Step1：创建Download_API9_Upper实例   
     构造函数为Download_API9_Upper(Context context)  
@@ -50,11 +50,11 @@ API 8(android2.2以上的用户)
     isDownloadManagerAvailable()：检查DownloadManager是否可用  
   
 ###### 请参考例子中的DownloadActivity的download_API9Upper()方法  
-###### 该方法支持多线程下载  
+###### 该方法支持多线程下载
   
 模块2说明：基于AsyncTask下载（兼容更广），带进度监听  
 -
-#### 用到的类为DownloadTask，该方法有两个构造函数    
+#### 用到的类为DownloadTask，该方法有两个构造函数
     不带进度监听的下载
       DownloadTask(Context context)  
       
@@ -64,8 +64,7 @@ API 8(android2.2以上的用户)
     本模块需要权限：
       <uses-permission android:name="android.permission.WAKE_LOCK" />
   
-#### Step 1：创建DownloadTask实例  
-    使用第一个构造函数为不带进度监听的下载，第二个构造函数为带进度监听的下载  
+#### Step 1：创建DownloadTask实例
   
 #### Step 2：进行下载    
     执行downloadTask.execute(String... sUrl);  
@@ -78,18 +77,19 @@ API 8(android2.2以上的用户)
     若不知道怎么获取downloadId，请看step2
   
 ###### 具体使用请参考DownloadActivity中download()方法  
+###### 该方法支持多线程下载
 
 模块3说明：图片的压缩  
 -
-###### 使用到的类为ImageCompression  
+#### 使用到的类为ImageCompression,该方法有两个构造函数
+    默认压缩，文件大小最大值为45KB：
+      ImageCompression(Context context)
+
+    自定义压缩，文件大小最大值为maxSize：
+      ImageCompression(Context context, int maxSize)
   
 #### Step 1：创建ImageCompression实例，构造函数有两个    
-    默认压缩，文件大小最大值为45KB：  
-      ImageCompression(Context context)
-    
-    自定义压缩，文件大小最大值为maxSize：
-      ImageCompression(Context context, int maxSize)  
-  
+
 #### Step 2：开始压缩  
     compress(String srcPath)，srcPath为需要压缩的文件的路径  
   
@@ -105,8 +105,8 @@ API 8(android2.2以上的用户)
   
 模块4说明：文件的基本操作  
 -
-###### 如果需要重设文件保存目录，请在自己的程序中申请读写权限  
-###### 使用到的类为FileOperation
+###### 如果需要重设文件保存目录，请在自己的程序中对读写权限进行判断和申请
+#### 使用到的类为FileOperation
 
 #### 该方法提供两种操作方法  
     1.使用带参数的方法，直接传入自己需要操作的文件进行操作  
