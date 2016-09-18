@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.PowerManager;
 
+import com.example.downloadlibrary.FileOperation;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -44,6 +46,10 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
         return downloaded;
     }
 
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
     public String getFileName() {
         return fileName;
     }
@@ -69,6 +75,12 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
                 int fileLength = connection.getContentLength();
                 // download the file
                 input = connection.getInputStream();
+                //设置下载的地址
+                FileOperation fo = new FileOperation(context);
+                fo.setFileDir(context.getExternalFilesDir("")+"/");
+                fo.setFileName(fileName);
+                if (fo.fileIsExists())
+                    fo.fileDelete();
                 output = new FileOutputStream(new File(context.getExternalFilesDir(""), fileName));
                 if (uiHandler != null) {
                     byte data[] = new byte[4096];

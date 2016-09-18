@@ -186,15 +186,20 @@ public class DownloadActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.bt_operation:
-                    ImageCompression imageCompression = new ImageCompression(DownloadActivity.this);
-                    imageCompression.compress(getExternalFilesDir("") + "/download.jpg");
-                    if (imageCompression.isCompressed()) {
-                        File file = new File(getExternalFilesDir("") + "/download_compression.jpg");
-                        iv_comp_img.setVisibility(View.VISIBLE);
-                        iv_comp_img.setImageURI(Uri.fromFile(file));
-                        tv_comp_img_size.setVisibility(View.VISIBLE);
-                        tv_comp_img_size.setText(FileOperation.getFileSize(file) / 1024 + " KB");
-                    }
+                    if(type.equals(getResources().getString(R.string.downloadImage))) {
+                        ImageCompression imageCompression = new ImageCompression(DownloadActivity.this);
+                        imageCompression.compress(getExternalFilesDir("") + "/download.jpg");
+                        if (imageCompression.isCompressed()) {
+                            File file = new File(getExternalFilesDir("") + "/download_compression.jpg");
+                            iv_comp_img.setVisibility(View.VISIBLE);
+                            iv_comp_img.setImageURI(Uri.fromFile(file));
+                            tv_comp_img_size.setVisibility(View.VISIBLE);
+                            tv_comp_img_size.setText(FileOperation.getFileSize(file) / 1024 + " KB");
+                        }
+                    }else if(type.equals(getResources().getString(R.string.downloadApp_API9Upper)))
+                        FileOperation.openAPK(getExternalFilesDir("")+"",downloadApi9Upper.getFileName());
+                    else if(type.equals(getResources().getString(R.string.downloadApp)))
+                        FileOperation.openAPK(getExternalFilesDir("")+"",downloadTask.getFileName());
                     break;
                 case R.id.bt_fileIsExist:
                     Toast.makeText(DownloadActivity.this,FileOperation.fileIsExists()+"",Toast.LENGTH_SHORT).show();
@@ -238,10 +243,11 @@ public class DownloadActivity extends AppCompatActivity {
                             File file = new File(getExternalFilesDir(""), "download.jpg");
                             iv_img.setImageURI(Uri.fromFile(file));
                             iv_img.setVisibility(View.VISIBLE);
-                            bt_operation.setVisibility(View.VISIBLE);
+
                             tv_img_size.setVisibility(View.VISIBLE);
                             tv_img_size.setText(FileOperation.getFileSize(file) / 1024 + " KB");
                         }
+                        bt_operation.setVisibility(View.VISIBLE);
                     }
                 }
             });

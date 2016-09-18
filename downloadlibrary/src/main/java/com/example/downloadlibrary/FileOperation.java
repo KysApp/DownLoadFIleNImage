@@ -87,7 +87,7 @@ public class FileOperation {
      * @return 文件是否被删除
      */
     public static boolean fileDelete(File file) {
-        if (fileIsExists()) {
+        if (fileIsExists(file)) {
             file.delete();
             return true;
         } else {
@@ -169,7 +169,7 @@ public class FileOperation {
     }
 
     public static boolean openAPK(String fileDir, String fileName) {
-        if (!fileIsExists()) {
+        if (!fileIsExists(new File(fileDir,fileName))) {
             Log.e("FileOperation", "the APK doesn't exist");
             return false;
         }
