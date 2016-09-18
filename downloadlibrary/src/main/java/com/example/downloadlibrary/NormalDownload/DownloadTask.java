@@ -26,7 +26,7 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
     private Handler uiHandler;
     //此id为调用downloadTask.execute(url)时，第几个url，从0开始
     private int downloadId = 0;
-    private boolean downloaded = true;
+    private boolean downloaded = false;
     private String fileName = "download.apk";
 
     public DownloadTask(Context context) {
@@ -77,27 +77,25 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
                 input = connection.getInputStream();
                 //设置下载的地址
                 FileOperation fo = new FileOperation(context);
-                fo.setFileDir(context.getExternalFilesDir("")+"/");
+                fo.setFileDir(context.getExternalFilesDir("") + "/");
                 fo.setFileName(fileName);
                 if (fo.fileIsExists())
                     fo.fileDelete();
                 output = new FileOutputStream(new File(context.getExternalFilesDir(""), fileName));
-                if (uiHandler != null) {
-                    byte data[] = new byte[4096];
-                    long total = 0;
-                    int count;
-                    while ((count = input.read(data)) != -1) {
-                        // allow canceling with back button
-                        if (isCancelled()) {
-                            input.close();
-                            return null;
-                        }
-                        total += count;
-                        // publishing the progress....
-                        if (fileLength > 0) // only if total length is known
-                            publishProgress((int) (total * 100 / fileLength));
-                        output.write(data, 0, count);
+                byte data[] = new byte[4096];
+                long total = 0;
+                int count;
+                while ((count = input.read(data)) != -1) {
+                    // allow canceling with back button
+                    if (isCancelled()) {
+                        input.close();
+                        return null;
                     }
+                    total += count;
+                    // publishing the progress....
+                    if (fileLength > 0) // only if total length is known
+                        publishProgress((int) (total * 100 / fileLength));
+                    output.write(data, 0, count);
                 }
             } catch (Exception e) {
                 return e.toString();
@@ -137,7 +135,7 @@ public class DownloadTask extends AsyncTask<String, Integer, String> {
     @Override
     protected void onPostExecute(String result) {
         mWakeLock.release();
-        if (result != null)
-            downloaded = false;
+        if (result == null)
+            downloaded = true;
     }
 }
