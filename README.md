@@ -1,6 +1,6 @@
 DownLoadFileNImage使用说明
 =
-##### lib导入语句：compile 'com.example.downloadlibrary:downloadlibrary:1.0.3'
+##### lib导入语句：compile 'com.example.downloadlibrary:downloadlibrary:1.0.2'
 
 用户群体
 -
