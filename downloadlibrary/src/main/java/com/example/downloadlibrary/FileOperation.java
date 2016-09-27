@@ -163,6 +163,7 @@ public class FileOperation {
 
     /**
      * 若为apk，可以调用该函数安装app
+     * @return 是否打开成功
      */
     public static boolean openAPK() {
         return openAPK(fileDir, fileName);

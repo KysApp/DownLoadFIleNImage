@@ -21,6 +21,8 @@ public class DownloadObserver extends ContentObserver {
      * Creates a content observer.
      *
      * @param handler The handler to run {@link #onChange} on, or null if none.
+     * @param context context
+     * @param downloadId The id of downloading task.
      */
     public DownloadObserver(Handler handler, Context context, long downloadId) {
         super(handler);

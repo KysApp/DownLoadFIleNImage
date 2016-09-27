@@ -87,6 +87,7 @@ public class Download_API9_Upper {
      * 传入url即可下载
      *
      * @param url url you want to download
+     * @throws Exception download manager has wrong params
      */
     public void download(String url) throws Exception {
         if (!isDownloadManagerAvailable())
@@ -106,7 +107,7 @@ public class Download_API9_Upper {
         }
         //设置下载的地址
         FileOperation fo = new FileOperation(context);
-        fo.setFileDir(context.getExternalFilesDir("")+"/");
+        fo.setFileDir(context.getExternalFilesDir("") + "/");
         fo.setFileName(fileName);
         if (fo.fileIsExists())
             fo.fileDelete();
@@ -117,6 +118,16 @@ public class Download_API9_Upper {
         downloadId = mDownloadManager.enqueue(request);
     }
 
+    /**
+     *  取消一个准备进行的下载，中止一个正在进行的下载，或者删除一个已经完成的下载。
+     *
+     * @param downloadId 需要取消的下载id
+     * @return 取消或删除的下载个数
+     */
+    public int downloadCancel(long... downloadId) {
+        DownloadManager mDownloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        return mDownloadManager.remove(downloadId);
+    }
 
     /**
      * {@link Download_API9_Upper#getDownloadPercentage(long, Handler handler)}
@@ -140,7 +151,6 @@ public class Download_API9_Upper {
     }
 
 
-
     public String getFileName() {
         return fileName;
     }
@@ -148,9 +158,10 @@ public class Download_API9_Upper {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
     /*获取文件路径*/
     public String getSavePath() {
-        return context.getFilesDir()+"/"+fileName;
+        return context.getFilesDir() + "/" + fileName;
     }
 
     public boolean isAllowScanningByMediaScanner() {
