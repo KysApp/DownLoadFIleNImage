@@ -16,15 +16,15 @@ API 8(android 2.2以上的用户，不包括android 2.2)
 ### Step1：创建Download实例
    **示例代码：** 
 ```java
-        Download download = new Download(context);
+    Download download = new Download(context);
 ```  
    构造函数为Download(Context context)  
   
 ### Step2：定制下载的参数，用getter和setter可以获取和设置定制参数
    **示例代码：**  
 ```java
-        download.setDownloadingNotifyWay(Download.VISIBILITY_HIDDEN).setFileName("name")
-        .setDownloadingTitle("test").setDownloadingDescription("this is a test");
+    download.setDownloadingNotifyWay(Download.VISIBILITY_HIDDEN).setFileName("name")
+    .setDownloadingTitle("test").setDownloadingDescription("this is a test");
 ```  
    **可定制参数如下：**  
         1.setFileName（String）：给下载的文件设置名字，有get和set（默认download.apk）  
@@ -36,7 +36,8 @@ API 8(android 2.2以上的用户，不包括android 2.2)
         6.setDownloadingDescription（String）：在有通知栏上的通知的情况下，正在下载通知的描述，默认”description”  
         7.DownloadId（long）：下载id，只有在调用getDownloadPercentage (long downloadId, Handler handler)时需要  
         8.isShowDownloading（boolean）：是否显示通知栏上的通知，若不在通知栏上显示通知，需要申请如下权限：  
-```java  <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" /> 
+```java  
+        <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" /> 
 ```
 ### Step 3：定制参数完毕之后，再调用下载方法
 **示例代码**
@@ -52,16 +53,16 @@ API 8(android 2.2以上的用户，不包括android 2.2)
 ```
 
 ### Step 4: 若需要更新自定义进度条的，请在调用完download之后添加获取进度更新的方法
-   示例代码：
-   I.调用：
-    ```java
+   **示例代码：**
+   _I.调用：_
+```java
     //获取本次下载id
     downloadId = download.getDownloadId();
     //通过id获得下载进度，并实时更新UI
     download.getDownloadPercentage(downloadId, new UIHandler());
-    ```
-    II.UIHandler的代码
-    ```java
+```
+   _II.UIHandler的代码_
+```java
     /**
      * 进度更新类,请将需要进度更新的UI写在handler中
      */
@@ -78,8 +79,8 @@ API 8(android 2.2以上的用户，不包括android 2.2)
                 });
             }
         }
-    ```
-    获取下载进度函数说明
+```
+   **获取下载进度函数说明**
 ```java
     /**
      * 获取下载进度
@@ -87,11 +88,16 @@ API 8(android 2.2以上的用户，不包括android 2.2)
      * @param downloadId 需要获得进度的下载id，在调用该函数之前调用get方法获取
      * @param handler    activity中更新进度条的UIHandler
      */
-    public void getDownloadPercentage(long downloadId, Handler handler) {
+    public void getDownloadPercentage(long downloadId, Handler handler)
 ```
   
 ### Step 5：其它方法
-   isDownloadManagerAvailable()：检查DownloadManager是否可用  
+```java
+    /**
+     * 检查DownloadManager是否可用
+     */
+    public void isDownloadManagerAvailable()
+```
   
 ###### 请参考例子中的DownloadActivity的download_API9Upper()方法  
 ###### 该方法支持多线程下载
@@ -101,21 +107,43 @@ API 8(android 2.2以上的用户，不包括android 2.2)
 1.图片压缩功能使用
 -
 ### 使用到的类为ImageCompression,该方法有两个构造函数
-   默认压缩，文件大小最大值为45KB：
-       ImageCompression(Context context)
-   自定义压缩，文件大小最大值为maxSize：
-       ImageCompression(Context context, int maxSize)
-  
-### Step 1：创建ImageCompression实例
-   示例代码：
 ```java
-        ImageCompression imageCompression = new ImageCompression(context);
+    /**
+     * 默认压缩，文件大小最大值为45KB
+     *
+     * @param context 上下文
+     */
+     ImageCompression(Context context)
+     
+     /**
+      * 自定义压缩，文件大小最大值为maxSize
+      *
+      * @param context 上下文
+      * @param maxSize  文件大小的最大值
+      */
+       ImageCompression(Context context, int maxSize)      
 ```
-### Step 2：开始压缩
-   compress(String srcPath)，srcPath为需要压缩的文件的路径  
-  示例代码：
+
+### Step 1：创建ImageCompression实例
+   **示例代码：**
 ```java
     ImageCompression imageCompression = new ImageCompression(context);
+```
+### Step 2：开始压缩
+
+
+  **示例代码：**
+```java
+    ImageCompression imageCompression = new ImageCompression(context);
+```
+  **代码说明**
+```java
+     /**
+      * 自定义压缩，文件大小最大值为maxSize
+      *
+      * @param srcPath srcPath为需要压缩的文件的路径
+      */
+       compress(String srcPath)      
 ```
 ### Step 3：其它方法
 ```java
@@ -159,6 +187,7 @@ API 8(android 2.2以上的用户，不包括android 2.2)
 
 #### 该方法提供两种操作方法  
 1.使用带参数的方法，直接传入自己需要操作的文件进行操作  
+  
 2.通过set方法设置好文件位置之后，直接使用不带参数的方法操作
 
  下面仅对操作方法1中的方法进行代码说明：
