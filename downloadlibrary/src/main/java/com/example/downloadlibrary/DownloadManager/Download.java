@@ -23,7 +23,7 @@ import java.util.List;
  * 5.默认存储地址为
  * Created by lhl on 2016/8/31.
  */
-public class Download_API9_Upper {
+public class Download {
 
     private static Context context;
     /*是否在通知栏上面显示进度*/
@@ -56,7 +56,7 @@ public class Download_API9_Upper {
     /*文件名称*/
     private String fileName = "download.apk";
 
-    public Download_API9_Upper(Context context) {
+    public Download(Context context) {
         this.context = context;
     }
 
@@ -89,9 +89,9 @@ public class Download_API9_Upper {
      * @param url url you want to download
      * @throws Exception download manager has wrong params
      */
-    public void download(String url) throws Exception {
+    public Download download(String url) throws Exception {
         if (!isDownloadManagerAvailable())
-            return;
+            return this;
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
         request.setDescription(DownloadingDescription);
         request.setTitle(DownloadingTitle);
@@ -116,6 +116,7 @@ public class Download_API9_Upper {
         DownloadManager mDownloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         //将下载加入下载队列
         downloadId = mDownloadManager.enqueue(request);
+        return this;
     }
 
     /**
@@ -130,7 +131,7 @@ public class Download_API9_Upper {
     }
 
     /**
-     * {@link Download_API9_Upper#getDownloadPercentage(long, Handler handler)}
+     * {@link Download#getDownloadPercentage(long, Handler handler)}
      *
      * @return 获取下载id
      */
@@ -150,13 +151,13 @@ public class Download_API9_Upper {
         context.getContentResolver().registerContentObserver(Uri.parse("content://downloads/"), true, new DownloadObserver(handler, context, downloadId));
     }
 
-
     public String getFileName() {
         return fileName;
     }
 
-    public void setFileName(String fileName) {
+    public Download setFileName(String fileName) {
         this.fileName = fileName;
+        return this;
     }
 
     /*获取文件路径*/
@@ -168,40 +169,45 @@ public class Download_API9_Upper {
         return allowScanningByMediaScanner;
     }
 
-    public void setAllowScanningByMediaScanner(boolean allowScanningByMediaScanner) {
+    public Download setAllowScanningByMediaScanner(boolean allowScanningByMediaScanner) {
         this.allowScanningByMediaScanner = allowScanningByMediaScanner;
+        return this;
     }
 
     public String getDownloadingDescription() {
         return DownloadingDescription;
     }
 
-    public void setDownloadingDescription(String downloadingDescription) {
+    public Download setDownloadingDescription(String downloadingDescription) {
         DownloadingDescription = downloadingDescription;
+        return this;
     }
 
     public int getDownloadingNotifyWay() {
         return DownloadingNotifyWay;
     }
 
-    public void setDownloadingNotifyWay(int downloadingNotifyWay) {
+    public Download setDownloadingNotifyWay(int downloadingNotifyWay) {
         DownloadingNotifyWay = downloadingNotifyWay;
+        return this;
     }
 
     public String getDownloadingTitle() {
         return DownloadingTitle;
     }
 
-    public void setDownloadingTitle(String downloadingTitle) {
+    public Download setDownloadingTitle(String downloadingTitle) {
         DownloadingTitle = downloadingTitle;
+        return this;
     }
 
     public boolean isShowDownloading() {
         return showDownloading;
     }
 
-    public void setShowDownloading(boolean showDownloading) {
+    public Download setShowDownloading(boolean showDownloading) {
         this.showDownloading = showDownloading;
+        return this;
     }
 
 

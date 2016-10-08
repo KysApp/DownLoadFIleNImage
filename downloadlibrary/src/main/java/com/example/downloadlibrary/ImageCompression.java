@@ -29,17 +29,32 @@ public class ImageCompression {
     //另存为的文件
     private File file;
 
+    /**
+     * 构造函数
+     *
+     * @param context 上下文
+     */
     public ImageCompression(Context context) {
         this.context = context;
         init();
     }
 
+    /**
+     * 构造函数
+     *
+     * @param context 上下文
+     * @param maxSize 压缩到的最大大小
+     */
     public ImageCompression(Context context, int maxSize) {
         this.context = context;
         this.maxSize = maxSize;
         init();
     }
 
+    /**
+     * 初始化压缩图片的输出路径、名称
+     * 获取屏幕的高宽
+     */
     private void init() {
         defaultDisplayH = getScreenHeight(context);
         defaultDisplayW = getScreenWidth(context);
@@ -50,18 +65,23 @@ public class ImageCompression {
         }
     }
 
-    public void setFile(File file) {
-        this.file = file;
-    }
-
+    /**
+     * @return 是否被成功压缩
+     */
     public boolean isCompressed() {
         return isCompressed;
     }
 
+    /**
+     * @return 获取被压缩到的最大大小
+     */
     public int getMaxSize() {
         return maxSize;
     }
 
+    /**
+     * @return 获取输出文件
+     */
     public File getFile() {
         return file;
     }

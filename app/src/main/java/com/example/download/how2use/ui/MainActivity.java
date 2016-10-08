@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void initData(){
         testList.add(getResources().getString(R.string.downloadApp_API9Upper));
-        testList.add(getResources().getString(R.string.downloadApp));
+//        testList.add(getResources().getString(R.string.downloadApp));
         testList.add(getResources().getString(R.string.downloadImage));
         testList.add(getResources().getString(R.string.fileOperation));
     }

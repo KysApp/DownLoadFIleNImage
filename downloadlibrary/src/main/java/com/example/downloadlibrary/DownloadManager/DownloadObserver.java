@@ -18,11 +18,11 @@ public class DownloadObserver extends ContentObserver {
     private boolean downloading = true;
     private Context context;
     /**
-     * Creates a content observer.
+     * 建立一个内容监听
      *
-     * @param handler The handler to run {@link #onChange} on, or null if none.
-     * @param context context
-     * @param downloadId The id of downloading task.
+     * @param handler 用于onChange中的进度改变之后，向handler中传递进度，若没有handler，可设置为null
+     * @param context 上下文
+     * @param downloadId 下载任务的id
      */
     public DownloadObserver(Handler handler, Context context, long downloadId) {
         super(handler);
@@ -35,7 +35,7 @@ public class DownloadObserver extends ContentObserver {
     /**
      * /data/data/com.android.providers.download/database/database.db 每次变化均会触发onChange
      *
-     * @param selfChange True if this is a self-change notification.
+     * @param selfChange 当自动触发onChange的时候返回true.
      */
     @Override
     public void onChange(boolean selfChange) {
@@ -54,6 +54,9 @@ public class DownloadObserver extends ContentObserver {
         }
     }
 
+    /**
+     * @return 该任务是否正在下载
+     */
     public boolean isDownloading(){
         return downloading;
     }

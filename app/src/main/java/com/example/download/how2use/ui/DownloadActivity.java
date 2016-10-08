@@ -21,10 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.download.R;
-import com.example.downloadlibrary.DownloadManager.Download_API9_Upper;
+import com.example.downloadlibrary.DownloadManager.Download;
 import com.example.downloadlibrary.FileOperation;
 import com.example.downloadlibrary.ImageCompression;
-import com.example.downloadlibrary.NormalDownload.DownloadTask;
 
 import java.io.File;
 
@@ -45,10 +44,10 @@ public class DownloadActivity extends AppCompatActivity {
     private boolean hasWRPermissionR = true;
     //下载id
     private long downloadId = 0;
-    private Download_API9_Upper downloadApi9Upper;
+    private Download download;
     private final String url = "http://m.koznak.tv/download/apk/kys/koznak_kys.apk";
     private final String imgUrl = "http://www.bazirim.tv/data/upload/mobile/special/s0/s0_05263329430906085.jpg";
-    private DownloadTask downloadTask;
+//    private DownloadTask downloadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,13 +100,13 @@ public class DownloadActivity extends AppCompatActivity {
 
     private void dispachWay() {
         switch (type) {
-            case "下载":
-                bt_operation.setText("打开app");
-                download();
-                break;
+//            case "下载":
+//                bt_operation.setText("打开app");
+//                download();
+//                break;
             case "下载(支持API9以上)":
                 bt_operation.setText("打开app");
-                download_API9Upper();
+                download();
                 break;
             case "下载图片":
                 bt_operation.setText("图片压缩");
@@ -127,30 +126,29 @@ public class DownloadActivity extends AppCompatActivity {
                 break;
         }
     }
-
-    /**
-     * 通用下载
-     */
-    private void download() {
-        downloadTask = new DownloadTask(DownloadActivity.this, new UIHandler());
-        downloadTask.execute(url);
-    }
+//
+//    /**
+//     * 通用下载
+//     */
+//    private void download() {
+//        downloadTask = new DownloadTask(DownloadActivity.this, new UIHandler());
+//        downloadTask.execute(url);
+//    }
 
     /**
      * api 9 以上的下载请用该函数
      */
-    private void download_API9Upper() {
-        downloadApi9Upper = new Download_API9_Upper(DownloadActivity.this);
+    private void download() {
+        download = new Download(DownloadActivity.this);
         try {
             /*通知栏不显示任何提示
             该设置和MediaScanner都需要在api13以上才能设置*/
-            downloadApi9Upper.setDownloadingNotifyWay(Download_API9_Upper.VISIBILITY_HIDDEN);
-            //设置下载地址，并开始下载
-            downloadApi9Upper.download(url);
+            download.setDownloadingNotifyWay(Download.VISIBILITY_HIDDEN)
+            .setFileName("hahaha").setDownloadingTitle("test").setDownloadingDescription("this is a test").download(url);
             //获取本次下载id
-            downloadId = downloadApi9Upper.getDownloadId();
+            downloadId = download.getDownloadId();
             //通过id获得下载进度，并实时更新UI
-            downloadApi9Upper.getDownloadPercentage(downloadId, new UIHandler());
+            download.getDownloadPercentage(downloadId, new UIHandler());
         } catch (Exception e) {
             Log.e("DownloadActvity", e.toString());
         }
@@ -160,19 +158,15 @@ public class DownloadActivity extends AppCompatActivity {
      * 图片下载及压缩
      */
     private void downloadImage() {
-        downloadApi9Upper = new Download_API9_Upper(DownloadActivity.this);
+        download = new Download(DownloadActivity.this);
         try {
             /*通知栏不显示任何提示
             该设置和MediaScanner都需要在api13以上才能设置*/
-            downloadApi9Upper.setDownloadingNotifyWay(Download_API9_Upper.VISIBILITY_HIDDEN);
-            //设置文件名称，默认为download.apk
-            downloadApi9Upper.setFileName("download.jpg");
-            //设置下载地址，并开始下载
-            downloadApi9Upper.download(imgUrl);
+            download.setDownloadingNotifyWay(Download.VISIBILITY_HIDDEN).setFileName("download.jpg").download(imgUrl);
             //获取本次下载id
-            downloadId = downloadApi9Upper.getDownloadId();
+            downloadId = download.getDownloadId();
             //通过id获得下载进度，并实时更新UI
-            downloadApi9Upper.getDownloadPercentage(downloadId, new UIHandler());
+            download.getDownloadPercentage(downloadId, new UIHandler());
         } catch (Exception e) {
             Log.e("DownloadActvity", e.toString());
         }
@@ -197,9 +191,9 @@ public class DownloadActivity extends AppCompatActivity {
                             tv_comp_img_size.setText(FileOperation.getFileSize(file) / 1024 + " KB");
                         }
                     }else if(type.equals(getResources().getString(R.string.downloadApp_API9Upper)))
-                        FileOperation.openAPK(getExternalFilesDir("")+"",downloadApi9Upper.getFileName());
-                    else if(type.equals(getResources().getString(R.string.downloadApp)))
-                        FileOperation.openAPK(getExternalFilesDir("")+"",downloadTask.getFileName());
+                        FileOperation.openAPK(getExternalFilesDir("")+"",download.getFileName());
+//                    else if(type.equals(getResources().getString(R.string.downloadApp)))
+//                        FileOperation.openAPK(getExternalFilesDir("")+"",downloadTask.getFileName());
                     break;
                 case R.id.bt_fileIsExist:
                     Toast.makeText(DownloadActivity.this,FileOperation.fileIsExists()+"",Toast.LENGTH_SHORT).show();
@@ -237,8 +231,8 @@ public class DownloadActivity extends AppCompatActivity {
                     pb_progressbar.setProgress(msg.what);
                     //若为图片，则显示图片和图片大小
                     if (msg.what == 100) {
-                        if (downloadTask != null)
-                            downloadTask.cancel(true);
+//                        if (downloadTask != null)
+//                            downloadTask.cancel(true);
                         if (type.equals(getResources().getString(R.string.downloadImage))) {
                             File file = new File(getExternalFilesDir(""), "download.jpg");
                             iv_img.setImageURI(Uri.fromFile(file));

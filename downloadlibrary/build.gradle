@@ -1,17 +1,17 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "1.0.2"       //这个是版本号，必须填写
+version = "1.0.3"       //这个是版本号，必须填写
 
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
     resourcePrefix "kysyfdownloadtools_"
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 9
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0.2"
+        versionName "1.0.3"
     }
     buildTypes {
         release {

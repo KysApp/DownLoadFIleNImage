@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * 使用该方法之前，请进行权限判断
- *
+ * <p>
  * Created by lhl on 2016/9/2.
  */
 public class FileOperation {
@@ -27,22 +27,41 @@ public class FileOperation {
         fileName = "download.apk";
     }
 
+    /**
+     * 获取文件保存目录
+     *
+     * @return 文件保存目录
+     */
     public String getFileDir() {
         return fileDir;
     }
 
+    /**
+     * 设置文件保存目录
+     *
+     * @param fileDir 文件保存目录
+     */
     public void setFileDir(String fileDir) {
         this.fileDir = fileDir;
     }
 
+    /**
+     * 获取保存的文件名
+     *
+     * @return 文件名
+     */
     public String getFileName() {
         return fileName;
     }
 
+    /**
+     * 设置保存的文件名
+     *
+     * @param fileName 保存的文件名
+     */
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
-
 
 
     /**
@@ -60,7 +79,6 @@ public class FileOperation {
      *
      * @param file 需要检查的文件
      * @return 存在为true，反之为false
-     * @throws NullPointerException if {@code fileName == null}.
      */
     public static boolean fileIsExists(File file) {
         if (!file.exists()) {
@@ -163,14 +181,21 @@ public class FileOperation {
 
     /**
      * 若为apk，可以调用该函数安装app
+     *
      * @return 是否打开成功
      */
     public static boolean openAPK() {
         return openAPK(fileDir, fileName);
     }
 
+    /**
+     * 若为apk，可以调用该函数安装app
+     * @param fileDir 文件保存目录
+     * @param fileName  文件保存名称
+     * @return 是否打开成功
+     */
     public static boolean openAPK(String fileDir, String fileName) {
-        if (!fileIsExists(new File(fileDir,fileName))) {
+        if (!fileIsExists(new File(fileDir, fileName))) {
             Log.e("FileOperation", "the APK doesn't exist");
             return false;
         }
