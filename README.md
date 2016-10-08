@@ -16,10 +16,16 @@ API 8(android 2.2以上的用户，不包括android 2.2)
 ### Step1：创建Download实例
    **示例代码：** 
 ```java
-    Download download = new Download(context);
+        Download download = new Download(context);
 ```  
-   构造函数为Download(Context context)  
-  
+   **构造函数说明**  
+```java
+    /**
+     * 下载方法说明
+     * @param context 上下文
+     */
+    public Download(Context context)
+```
 ### Step2：定制下载的参数，用getter和setter可以获取和设置定制参数
    **示例代码：**  
 ```java
@@ -48,12 +54,13 @@ API 8(android 2.2以上的用户，不包括android 2.2)
      * 下载方法说明
      * @param url 下载地址
      * @return this
+     * @throws Exception 有错误参数时，将抛出异常
      */
     public Download download(String url) throws Exception
 ```
 
 ### Step 4: 若需要更新自定义进度条的，请在调用完download之后添加获取进度更新的方法
-   **示例代码：**
+   **示例代码：**  
    _I.调用：_
 ```java
     //获取本次下载id
@@ -113,7 +120,7 @@ API 8(android 2.2以上的用户，不包括android 2.2)
      *
      * @param context 上下文
      */
-     ImageCompression(Context context)
+    public ImageCompression(Context context)
      
      /**
       * 自定义压缩，文件大小最大值为maxSize
@@ -121,7 +128,7 @@ API 8(android 2.2以上的用户，不包括android 2.2)
       * @param context 上下文
       * @param maxSize  文件大小的最大值
       */
-       ImageCompression(Context context, int maxSize)      
+    public ImageCompression(Context context, int maxSize)      
 ```
 
 ### Step 1：创建ImageCompression实例
@@ -130,11 +137,9 @@ API 8(android 2.2以上的用户，不包括android 2.2)
     ImageCompression imageCompression = new ImageCompression(context);
 ```
 ### Step 2：开始压缩
-
-
   **示例代码：**
 ```java
-    ImageCompression imageCompression = new ImageCompression(context);
+    imageCompression.compress(yourOutputPath);
 ```
   **代码说明**
 ```java
@@ -143,7 +148,7 @@ API 8(android 2.2以上的用户，不包括android 2.2)
       *
       * @param srcPath srcPath为需要压缩的文件的路径
       */
-       compress(String srcPath)      
+     public void compress(String srcPath)      
 ```
 ### Step 3：其它方法
 ```java

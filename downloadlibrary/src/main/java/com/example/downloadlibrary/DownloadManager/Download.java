@@ -86,8 +86,9 @@ public class Download {
     /**
      * 传入url即可下载
      *
-     * @param url url you want to download
-     * @throws Exception download manager has wrong params
+     * @param url 下载地址
+     * @return this
+     * @throws Exception 有错误参数时，将抛出异常
      */
     public Download download(String url) throws Exception {
         if (!isDownloadManagerAvailable())
