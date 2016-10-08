@@ -14,34 +14,32 @@ API 8(android 2.2以上的用户，不包括android 2.2)
 ```
 
 ### Step1：创建Download实例
-   示例代码：  
-    ```java
+   **示例代码：** 
+```java
         Download download = new Download(context);
-    ```  
+```  
    构造函数为Download(Context context)  
   
 ### Step2：定制下载的参数，用getter和setter可以获取和设置定制参数
-   示例代码：  
-    ```java
+   **示例代码：**  
+```java
         download.setDownloadingNotifyWay(Download.VISIBILITY_HIDDEN).setFileName("name")
         .setDownloadingTitle("test").setDownloadingDescription("this is a test");
-    ```  
-   可定制参数如下：  
-       1.setFileName（String）：给下载的文件设置名字，有get和set（默认download.apk）  
-       2.setSavePath（String）：为保证文件存在，该方法只能保存在默认路径，但是提供了文件操作类  
-        详情请见文件操作类说明，有get方法  
-       3.isAllowScanningByMediaScanner（boolean）：是否允许被系统MediaScanner扫描到，有get和set方法，默认false  
-       4.setDownloadingNotifyWay（int）:在有通知栏上的通知的情况下，通知显示方式，有get和set方法，默认VISIBILITY_HIDDEN  
-       5.setDownloadingTitle（String）：在有通知栏上的通知的情况下，正在下载通知的标题，默认“title”  
-       6.setDownloadingDescription（String）：在有通知栏上的通知的情况下，正在下载通知的描述，默认”description”  
-       7.DownloadId（long）：下载id，只有在调用getDownloadPercentage (long downloadId, Handler handler)时需要  
-       8.isShowDownloading（boolean）：是否显示通知栏上的通知，若不在通知栏上显示通知，需要申请如下权限：  
-       ```java
-            <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-       ```
-
+```  
+   **可定制参数如下：**  
+        1.setFileName（String）：给下载的文件设置名字，有get和set（默认download.apk）  
+        2.setSavePath（String）：为保证文件存在，该方法只能保存在默认路径，但是提供了文件操作类  
+         详情请见文件操作类说明，有get方法  
+        3.isAllowScanningByMediaScanner（boolean）：是否允许被系统MediaScanner扫描到，有get和set方法，默认false  
+        4.setDownloadingNotifyWay（int）:在有通知栏上的通知的情况下，通知显示方式，有get和set方法，默认VISIBILITY_HIDDEN  
+        5.setDownloadingTitle（String）：在有通知栏上的通知的情况下，正在下载通知的标题，默认“title”  
+        6.setDownloadingDescription（String）：在有通知栏上的通知的情况下，正在下载通知的描述，默认”description”  
+        7.DownloadId（long）：下载id，只有在调用getDownloadPercentage (long downloadId, Handler handler)时需要  
+        8.isShowDownloading（boolean）：是否显示通知栏上的通知，若不在通知栏上显示通知，需要申请如下权限：  
+```java  <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" /> 
+```
 ### Step 3：定制参数完毕之后，再调用下载方法
-    示例代码
+**示例代码**
 ```java
           download.setDownloadingNotifyWay(Download.VISIBILITY_HIDDEN).setFileName("name")
           .setDownloadingTitle("test").setDownloadingDescription("this is a test").download(url);
