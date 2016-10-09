@@ -1,5 +1,5 @@
-DownLoadFileNImage：基于DownloadManager的下载
-=
+DownLoadFileNImage：基于DownloadManager并可以监听下载进度的下载
+================================================
 ##### lib导入语句：compile 'com.example.downloadlibrary:downloadlibrary:1.0.2'
 
 用户群体
@@ -46,7 +46,7 @@ API 8(android 2.2以上的用户，不包括android 2.2)
         <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" /> 
 ```
 ### Step 3：定制参数完毕之后，再调用下载方法
-**示例代码**
+   **示例代码**  
 ```java
           download.setDownloadingNotifyWay(Download.VISIBILITY_HIDDEN).setFileName("name")
           .setDownloadingTitle("test").setDownloadingDescription("this is a test").download(url);
@@ -106,7 +106,7 @@ API 8(android 2.2以上的用户，不包括android 2.2)
     public void isDownloadManagerAvailable()
 ```
   
-###### 请参考例子中的DownloadActivity的download_API9Upper()方法  
+###### 请参考例子中的DownloadActivity的download()方法  
 ###### 该方法支持多线程下载
 
 为满足下载之后的一些后续要求，该下载还支持图片保持原比例压缩大小，打开apk和文件操作的功能

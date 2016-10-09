@@ -115,7 +115,7 @@ public class DownloadActivity extends AppCompatActivity {
             case "文件处理":
                 FileOperation fo = new FileOperation(DownloadActivity.this);
                 fo.setFileDir(getExternalFilesDir("") + "");
-                fo.setFileName("download.apk");
+                fo.setFileName("hahaha.apk");
                 pb_progressbar.setVisibility(View.GONE);
 
                 findViewById(R.id.bt_fileIsExist).setVisibility(View.VISIBLE);
@@ -144,7 +144,7 @@ public class DownloadActivity extends AppCompatActivity {
             /*通知栏不显示任何提示
             该设置和MediaScanner都需要在api13以上才能设置*/
             download.setDownloadingNotifyWay(Download.VISIBILITY_HIDDEN)
-            .setFileName("hahaha").setDownloadingTitle("test").setDownloadingDescription("this is a test").download(url);
+            .setFileName("hahaha.apk").setDownloadingTitle("test").setDownloadingDescription("this is a test").download(url);
             //获取本次下载id
             downloadId = download.getDownloadId();
             //通过id获得下载进度，并实时更新UI
